@@ -6,6 +6,7 @@ from insercao import inserir_apostas
 from lista import listar_apostas
 from atualiza import atualizar_aposta
 from deleta import excluir_aposta
+from simulacao import simular_apostas
 
 console = Console()
 
@@ -14,6 +15,7 @@ menu = ("""
 2. Listar Apostas(por nome)
 3. Alterar Aposta
 4. Excluir Aposta
+5. Simular Apostas
 0. Finalizar
 """)
 
@@ -32,6 +34,8 @@ while True:
         atualizar_aposta()
     elif opcao == 4:
         excluir_aposta()
+    elif opcao == 5:
+        simular_apostas()
     elif opcao == 0:
         console.print("[bold cyan]Fim do Programa[/bold cyan]")
         break
