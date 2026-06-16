@@ -1,15 +1,14 @@
 import psycopg2
-from psycopg2.extras import RealDictCursor
 from config import CONFIG
 
-conexao = psycopg2.connect(**CONFIG)
-print("Conectado!")
-cursor = conexao.cursor(cursor_factory=RealDictCursor)
+def excluir_aposta(nome_aposta="David"):
+	conexao = psycopg2.connect(**CONFIG)
+	cursor = conexao.cursor()
 
-sql = "DELETE FROM apostas WHERE id = %s"
-cursor.execute(sql, (3,))
-conexao.commit()
+	sql = "DELETE FROM apostas WHERE nome = %s"
+	cursor.execute(sql, (nome_aposta,))
+	conexao.commit()
 
-print(cursor.rowcount, "linha(s) removida(s)")
-cursor.close()
-conexao.close()
+	print(cursor.rowcount, "linha(s) removida(s)")
+	cursor.close()
+	conexao.close()
