@@ -9,12 +9,25 @@ def inserir_apostas():
     INSERT INTO apostas (nome, selecao, valor)
     VALUES (%s, %s, %s)
     """
-    aposta1 = ("David", "Brasil", 100.00)
-    aposta2 = ("Henrique", "Argentina", 200.00)
 
-    cursor.execute(sql, aposta1)
-    cursor.execute(sql, aposta2)
+    nome = input("Nome: ").strip().lower()
+    selecao = input("Seleção: ").strip().lower()
+
+    while True:
+        valor_str = input("Valor (mínimo R$10 use ponto para decimal): ").strip()
+        try:
+            valor = float(valor_str)
+            if valor < 10:
+                print("O valor deve ser pelo menos R$10. Tente novamente.")
+                continue
+            break
+        except ValueError:
+            print("Valor inválido. Digite um número como 100.00")
+
+    cursor.execute(sql, (nome, selecao, valor))
+
     conexao.commit()
+    print("Aposta inserida com sucesso.")
 
     cursor.close()
     conexao.close()

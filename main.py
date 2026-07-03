@@ -27,7 +27,6 @@ while True:
 
     if opcao == 1:
         inserir_apostas()
-        print("Apostas inseridas com sucesso!")
     elif opcao == 2:
        listar_apostas()
     elif opcao == 3:
@@ -41,5 +40,5 @@ while True:
         break
     else:
         console.print("[bold red]Opção inválida[/bold red]")
-
+        
     input("\nPressione Enter para continuar...")
