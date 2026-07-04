@@ -2,6 +2,7 @@ from rich.console import Console
 from rich.panel import Panel
 import os
 
+from conexao import inicializar_banco
 from insercao import inserir_apostas
 from lista import listar_apostas
 from atualiza import atualizar_aposta
@@ -9,6 +10,8 @@ from deleta import excluir_aposta
 from simulacao import simular_apostas
 
 console = Console()
+
+inicializar_banco()
 
 menu = ("""
 1. Incluir Aposta
